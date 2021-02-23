@@ -313,6 +313,17 @@ void ButtonMatrixUpdate()
 			numberButton = 0;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 		}
+		else if(ButtonMatrixState == 0b1000000000000000)
+		{
+			if(Password[0] == 64 && Password[1] == 512 && Password[2] == 1024 && Password[3] == 16 && Password[4] == 4096 && Password[5] == 32 && Password[6] == 4096 && Password[7] == 4096 && Password[8] == 4096 && Password[9] == 32 && Password[10] == 4)
+			{
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+			}
+			else
+			{
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+			}
+		}
 		PastButtonMatrixState = ButtonMatrixState;
 	}
 }
