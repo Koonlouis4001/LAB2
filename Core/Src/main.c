@@ -303,6 +303,16 @@ void ButtonMatrixUpdate()
 				numberButton += 1;
 			}
 		}
+		else if(ButtonMatrixState == 0b1000)
+		{
+			int j;
+			for(j = 0; j<11;++j)
+			{
+				Password[j] = 0;
+			}
+			numberButton = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		}
 		PastButtonMatrixState = ButtonMatrixState;
 	}
 }
