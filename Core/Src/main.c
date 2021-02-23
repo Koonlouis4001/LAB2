@@ -295,6 +295,14 @@ void ButtonMatrixUpdate()
 		ButtonMatrixLine = (ButtonMatrixLine + 1) %4;
 		uint8_t NextOutputPin = ButtonMatrixLine + 4;
 		HAL_GPIO_WritePin(ButtonMatrixPort[NextOutputPin],ButtonMatrixPin[NextOutputPin], GPIO_PIN_RESET);
+		if(PastButtonMatrixState == 0 && ButtonMatrixState != 0 && numberButton <= 10)
+		{
+			if(ButtonMatrixState != 0b1000 && ButtonMatrixState != 0b10000000 && ButtonMatrixState != 0b100000000000 && ButtonMatrixState != 0b10000000000000 && ButtonMatrixState != 0b100000000000000 && ButtonMatrixState != 0b1000000000000000)
+			{
+				Password[numberButton] = ButtonMatrixState;
+				numberButton += 1;
+			}
+		}
 		PastButtonMatrixState = ButtonMatrixState;
 	}
 }
