@@ -45,6 +45,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 //save status of Button Matrix
 uint16_t ButtonMatrixState = 0;
+uint16_t PastButtonMatrixState = 0;
 
 //Button TimeStamp
 uint32_t ButtonMatrixTimestamp = 0;
@@ -57,6 +58,9 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 //scan and update data of Button Matrix
 void ButtonMatrixUpdate();
+
+uint16_t Password[11]; //save button one by one
+int numberButton = 0;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -291,6 +295,7 @@ void ButtonMatrixUpdate()
 		ButtonMatrixLine = (ButtonMatrixLine + 1) %4;
 		uint8_t NextOutputPin = ButtonMatrixLine + 4;
 		HAL_GPIO_WritePin(ButtonMatrixPort[NextOutputPin],ButtonMatrixPin[NextOutputPin], GPIO_PIN_RESET);
+		PastButtonMatrixState = ButtonMatrixState;
 	}
 }
 /* USER CODE END 4 */

@@ -54,8 +54,8 @@ all: main-build
 main-build: LAB2.elf secondary-outputs
 
 # Tool invocations
-LAB2.elf: $(OBJS) $(USER_OBJS) C:\Users\Louis\STM32CubeIDE\workspace_1.5.1\LAB2\STM32F411RETX_FLASH.ld
-	arm-none-eabi-gcc -o "LAB2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Louis\STM32CubeIDE\workspace_1.5.1\LAB2\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LAB2.elf: $(OBJS) $(USER_OBJS) C:\Users\Louis\Documents\GitHub\LAB2\STM32F411RETX_FLASH.ld
+	arm-none-eabi-gcc -o "LAB2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Louis\Documents\GitHub\LAB2\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
